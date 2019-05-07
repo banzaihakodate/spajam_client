@@ -9,12 +9,13 @@ import firebase from 'firebase'
 Vue.config.productionTip = false;
 
 const config = {
-  apiKey: "AIzaSyBfiqp1ah6IV8Rq-b4pK8TdF1hA-QL2Aeo",
-  authDomain: "spajam2019-tmp.firebaseapp.com",
-  databaseURL: "https://spajam2019-tmp.firebaseio.com",
-  projectId: "spajam2019-tmp",
-  storageBucket: "spajam2019-tmp.appspot.com",
-  messagingSenderId: "627257785310"
+  apiKey: "AIzaSyAm6OmZVpHriLyUZ8w1Dm8btEInBnMucok",
+  authDomain: "banzai-hakodate.firebaseapp.com",
+  databaseURL: "https://banzai-hakodate.firebaseio.com",
+  projectId: "banzai-hakodate",
+  storageBucket: "banzai-hakodate.appspot.com",
+  messagingSenderId: "182299175330",
+  appId: "1:182299175330:web:fcecf948eda766ad"
 };
 
 firebase.initializeApp(config);
