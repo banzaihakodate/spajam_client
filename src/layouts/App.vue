@@ -23,10 +23,11 @@
 
 <style>
   .toolbar {
-    position: fixed;
+    position: sticky;
+    top: 0;
     z-index: 1000;
   }
   .content {
-    margin-top: 8vh;
+    height: 90vh;
   }
 </style>
