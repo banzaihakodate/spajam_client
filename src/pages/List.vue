@@ -1,6 +1,6 @@
 <template>
   <div class="pl-5 pr-5 hoge">
-    <div class="text-xs-center">{{`${this.users.length} person`}}</div>
+    <div class="text-xs-center"><h2>{{`${this.users.length} person`}}</h2></div>
     <div class="pt-3"></div>
       <Card class="card mb-2" v-for="(item, index) in this.users" v-bind:key="index" v-bind="item"/>
     <div class="text-xs-center pt-5">

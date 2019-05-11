@@ -5,4 +5,5 @@ export const input = {
   evil: state => state.input.evil,
   users: state => state.input.users,
   isHoi: state => state.input.isHoi,
+  stateAngle: state => state.input.angle,
 };

@@ -5,4 +5,5 @@ export const input = {
   evil: false,
   users: [],
   isHoi: false,
+  angle: 0,
 };
