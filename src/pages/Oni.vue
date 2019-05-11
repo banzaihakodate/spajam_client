@@ -1,6 +1,8 @@
 <template>
   <div class="pl-5 pr-5 hoge">
-    <div class="text-xs-center">Your Job is ...</div>
+    <div class="text-xs-center">
+      <h2>Your Job is ...</h2>
+    </div>
     <transition name="fade">
       <img v-if='this.oni' src="../assets/oni.png" class="img"/>
       <img v-if='this.person' src="../assets/person.png" class="img"/>

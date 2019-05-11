@@ -65,7 +65,7 @@ export const input = {
 
           firestore().collection("rooms").doc(data.id).get().then(function(data) {
             if(data.data().IsCollected){
-              router.push('oni')
+              router.push('oni');
             }
           })
         }
@@ -112,7 +112,11 @@ export const input = {
       commit(SUCCESS_USERS, {users})
     });
   },
-  [INIT_REQUEST] ({ commit }) {
+  [INIT_REQUEST] ({ commit }, data) {
+    firestore().collection("rooms").doc(data).get().then(function(doc) {
+      if (doc.exists) {
+        firestore().collection("rooms").doc(data).delete();
+      }});
     commit(INIT_REQUEST);
   }
 };

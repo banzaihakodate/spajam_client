@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      // Getterから受け取りたい値を選択
+      'id',
     ]),
   },
   methods: {
@@ -34,7 +34,7 @@ export default {
       INIT_REQUEST
     ]),
     start(){
-      this.INIT_REQUEST();
+      this.INIT_REQUEST(this.id);
       router.push('/')
     }
   }

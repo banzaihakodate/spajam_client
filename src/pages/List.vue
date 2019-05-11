@@ -9,7 +9,8 @@
         @click="start"
         color="primary"
         class="button"
-        v-if="this.host">
+        v-if="this.host"
+        :disabled="this.users.length <= 1">
         Start
       </v-btn>
     </div>
@@ -53,7 +54,8 @@ export default {
       this.REQUEST_USERS({id:this.id, name: this.name})
     }
   },
-  created() {
+  mounted() {
+    this.askUsers();
     setTimeout(
       this.askUsers
       ,2000)
