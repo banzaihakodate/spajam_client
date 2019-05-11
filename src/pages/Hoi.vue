@@ -1,16 +1,23 @@
 <template>
-  <div class="home">
+  <div class="pl-5 pr-5">
     <div v-if="isDebug">
       <div>{{beta}}</div>
       <div>{{gamma}}</div>
       <div>{{y}}</div>
       <div>{{x}}</div>
     </div>
-    <div v-if="!evil">{{angle}}</div>
+    <div v-if="!evil">
+      <img :style="{ transform: 'rotate('+ this.angle +'deg)'}" src="../assets/yubi.png" class="img"/>
+    </div>
+    <div class="hoge">
     <v-btn
-      @click="start">
-      スタート
+      round
+      @click="start"
+      color="primary"
+      class="button">
+      Start
     </v-btn>
+    </div>
   </div>
 </template>
 
@@ -26,10 +33,9 @@ export default {
       isDebug:false,
       beta:0,
       gamma:0,
-      x:0, 
+      x:0,
       y:0,
-      angle:0
-      // このコンポーネントのみで使う値の宣言
+      angle:0,
     }
   },
   components: {
@@ -87,8 +93,8 @@ export default {
       if (newVal) {
         window.removeEventListener('deviceorientation', this.orientationHandler)
         this.REQUEST_SET_GYRO({
-          roomID:this.id, 
-          userID:this.name, 
+          roomID:this.id,
+          userID:this.name,
           gyro:this.angle
         })
       }
@@ -106,3 +112,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .button, .img {
+    width: 100%;
+  }
+  .img, .hoge{
+    padding-top: 15vh;
+  }
+</style>
