@@ -55,7 +55,6 @@ export default {
     }
   },
   mounted() {
-    this.askUsers();
     setTimeout(
       this.askUsers
       ,2000)
