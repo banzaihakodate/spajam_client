@@ -11,7 +11,7 @@
         class="button"
         v-if="this.host"
         :disabled="this.users.length <= 1">
-        Start
+        Ready
       </v-btn>
     </div>
   </div>

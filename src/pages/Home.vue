@@ -23,7 +23,7 @@
           @click="start"
           color="primary"
           class="button">
-          Start
+          Next
         </v-btn>
       </div>
     </div>
