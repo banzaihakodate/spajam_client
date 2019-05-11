@@ -3,5 +3,6 @@ export const input = {
   id: '',
   host: false,
   evil: false,
-  users: []
+  users: [],
+  isHoi: false,
 };

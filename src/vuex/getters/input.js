@@ -4,4 +4,5 @@ export const input = {
   host: state => state.input.host,
   evil: state => state.input.evil,
   users: state => state.input.users,
+  isHoi: state => state.input.isHoi,
 };
