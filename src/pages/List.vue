@@ -2,7 +2,7 @@
   <div class="pl-5 pr-5 hoge">
     <div class="text-xs-center">{{`${this.users.length} person`}}</div>
     <div class="pt-3"></div>
-    <Card class="card mb-2" v-for="(item, index) in this.users" v-bind:key="index" v-bind="item"/>
+      <Card class="card mb-2" v-for="(item, index) in this.users" v-bind:key="index" v-bind="item"/>
     <div class="text-xs-center pt-5">
       <v-btn
         round
@@ -55,10 +55,7 @@ export default {
     }
   },
   mounted() {
-    this.askUsers();
-    setTimeout(
-      this.askUsers
-      ,2000)
+      this.askUsers()
     ;
   }
 }
@@ -70,5 +67,14 @@ export default {
   }
   .button, .img {
     width: 100%;
+  }
+  .card-enter {
+    opacity: 0;
+  }
+  .card-enter-to {
+    opacity: 1;
+  }
+  .card-enter-active {
+    transition: all 0s ease 2s;
   }
 </style>

@@ -64,7 +64,9 @@ export default {
       };
 
       this.REQUEST_INPUT(data);
-      router.push('/list')
+      setTimeout(()=> {
+        router.push('/list')
+      }, 1500);
     }
   }
 }
