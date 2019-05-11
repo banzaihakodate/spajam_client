@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import './plugins/vuetify'
 import router from './plugins/router'
-// import store from './vuex/store'
+import store from './vuex/store'
 import './registerServiceWorker'
 import App from './layouts/App'
 import firebase from 'firebase'
@@ -20,9 +20,8 @@ const config = {
 
 firebase.initializeApp(config);
 
-
 new Vue({
   router,
-  // store,
+  store,
   render: h => h(App)
 }).$mount('#app');

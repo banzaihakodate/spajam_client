@@ -1,18 +1,47 @@
 <template>
   <div class="home">
-    <h1>ホーム</h1>
+    <div class="pl-5 pr-5">
+      <img src="../assets/icon.png" class="img"/>
+      <v-flex xs12 md3 class="pt-5">
+        <v-text-field
+          label="Name"
+          v-model="name"
+          prepend-inner-icon="person"
+        ></v-text-field>
+      </v-flex>
+      <v-flex xs12 md3>
+        <v-text-field
+          type="number"
+          label="ID"
+          v-model="id"
+          prepend-inner-icon="domain"
+        ></v-text-field>
+      </v-flex>
+      <div class="text-xs-center pt-5">
+        <v-btn
+          round
+          @click="start"
+          color="primary"
+          class="button">
+          Start
+        </v-btn>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapActions ,mapGetters } from 'vuex'
+import router from '../plugins/router'
+import { REQUEST_INPUT } from '../vuex/actions/input'
 
 // 以下ではココでthisを用いて使用できるようにするための宣言
 export default {
   name: 'home',
   data() {
     return {
-      // このコンポーネントのみで使う値の宣言
+      name: '',
+      id: '',
     }
   },
   components: {
@@ -25,8 +54,28 @@ export default {
   },
   methods: {
     ...mapActions([
-      // Actionから受け取りたいアクションを選択
+      REQUEST_INPUT
     ]),
+    start(){
+      // TODO: firebaseへの追加
+      const data = {
+        name: this.name,
+        id: this.id,
+      };
+
+      this.REQUEST_INPUT(data);
+      router.push('/list')
+    }
   }
 }
 </script>
+<style scoped>
+  .home {
+  }
+  .button, .img {
+    width: 100%;
+  }
+  .img {
+    padding-top: 15vh;
+  }
+</style>
