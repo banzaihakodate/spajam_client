@@ -81,7 +81,8 @@ export const input = {
     userCollection.onSnapshot(querySnapshot => {
       users = [];
       querySnapshot.forEach(doc => {
-        users.push({name: doc.id});
+        const fields = doc.data()
+        users.push({name: doc.id, gyro: fields.Gyro, isEvil: fields.IsEvil, isHost: fields.IsHost});
       });
       commit(SUCCESS_USERS, {users})
     });
