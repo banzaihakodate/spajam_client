@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { mapActions ,mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import router from '../plugins/router'
 
 // 以下ではココでthisを用いて使用できるようにするための宣言
@@ -37,11 +37,13 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'evil'
+      'evil',
+      'id'
     ]),
   },
   methods: {
     ...mapActions([
+      'REQUEST_DONE_HOI'
       // Actionから受け取りたいアクションを選択
     ]),
     start(){
@@ -50,7 +52,7 @@ export default {
     audio(){
       const audio = new Audio('https://vocaroo.com/media_command.php?media=s1krZxkdiCyw&command=download_mp3')
       audio.addEventListener('ended', () => {
-        console.log('ishoiをtureにする処理を記述する')
+        this.REQUEST_DONE_HOI(this.id)
       })
       audio.play();
     },
