@@ -5,7 +5,7 @@ import {
   REQUEST_USERS,
   SUCCESS_USERS,
   FAILED_USERS,
-  REQUEST_ADD_EVIL, SUCCESS_ADD_EVIL, FAILED_ADD_EVIL, REQUEST_START_HOI, REQUEST_START_TRIGGER
+  REQUEST_ADD_EVIL, SUCCESS_ADD_EVIL, FAILED_ADD_EVIL, REQUEST_START_HOI, REQUEST_START_TRIGGER, INIT_REQUEST
 } from "../actions/input";
 
 export const input = {
@@ -36,6 +36,13 @@ export const input = {
   },
   [REQUEST_START_TRIGGER] () {
   },
-
-
+  [INIT_REQUEST] (state) {
+    state.input = {
+      name: '',
+      id: '',
+      host: false,
+      evil: false,
+      users: []
+    }
+  }
 };

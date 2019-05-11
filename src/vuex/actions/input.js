@@ -17,6 +17,8 @@ export const REQUEST_START_HOI = 'REQUEST_START_HOI';
 
 export const REQUEST_START_TRIGGER = 'REQUEST_START_TRIGGER';
 
+export const INIT_REQUEST = 'INIT_REQUEST';
+
 let users = [];
 
 export const input = {
@@ -110,4 +112,7 @@ export const input = {
       commit(SUCCESS_USERS, {users})
     });
   },
+  [INIT_REQUEST] ({ commit }) {
+    commit(INIT_REQUEST);
+  }
 };

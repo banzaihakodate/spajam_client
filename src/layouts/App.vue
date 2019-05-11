@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="back">
     <v-content class="content">
       <transition mode='out-in'>
         <router-view/>
@@ -12,7 +12,6 @@
   .content {
     height: 90vh;
   }
-
   .v-enter {
     transform: translate(100%, 0);
   }
