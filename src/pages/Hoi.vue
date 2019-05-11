@@ -1,12 +1,12 @@
 <template>
   <div class="home">
-    <div v-if="isDebuf">
+    <div v-if="isDebug">
       <div>{{beta}}</div>
       <div>{{gamma}}</div>
       <div>{{y}}</div>
       <div>{{x}}</div>
     </div>
-    {{angle}}
+    <div v-if="!evil">{{angle}}</div>
     <v-btn
       @click="start">
       スタート
@@ -48,7 +48,10 @@ export default {
       router.push('/win')
     },
     audio(){
-      const audio = new Audio("http://kina-ko.appspot.com/toy/suiso/a_oto_m64.mp3?20180405");
+      const audio = new Audio('https://vocaroo.com/media_command.php?media=s1krZxkdiCyw&command=download_mp3')
+      audio.addEventListener('ended', () => {
+        console.log('ishoiをtureにする処理を記述する')
+      })
       audio.play();
     },
     orientationHandler() { //要パラメータ調整
@@ -65,9 +68,10 @@ export default {
     }
   },
   created() {
-    window.addEventListener('deviceorientation', this.orientationHandler)
-    if (this.evil === true ) {
+    if (this.evil) {
       setTimeout(this.audio, 2000);
+    } else {
+      window.addEventListener('deviceorientation', this.orientationHandler)
     }
   }
 }
