@@ -11,6 +11,7 @@
 <script>
 import { mapActions ,mapGetters } from 'vuex'
 import router from '../plugins/router'
+import { INIT_REQUEST } from '../vuex/actions/input'
 
 // 以下ではココでthisを用いて使用できるようにするための宣言
 export default {
@@ -25,15 +26,15 @@ export default {
   },
   computed: {
     ...mapGetters([
-      // Getterから受け取りたい値を選択
+      'id',
     ]),
   },
   methods: {
     ...mapActions([
-      // Actionから受け取りたいアクションを選択
+      INIT_REQUEST
     ]),
     start(){
-      // TODO: hostの場合，flagの変更，コレクションの1番目に鬼付与
+      this.INIT_REQUEST(this.id);
       router.push('/')
     }
   }
