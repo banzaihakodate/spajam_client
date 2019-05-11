@@ -5,7 +5,10 @@ import {
   REQUEST_USERS,
   SUCCESS_USERS,
   FAILED_USERS,
-  REQUEST_ADD_EVIL, SUCCESS_ADD_EVIL, FAILED_ADD_EVIL, REQUEST_START_HOI, REQUEST_START_TRIGGER, INIT_REQUEST
+  REQUEST_ADD_EVIL, SUCCESS_ADD_EVIL, FAILED_ADD_EVIL, REQUEST_START_HOI, REQUEST_START_TRIGGER, INIT_REQUEST,
+  REQUEST_IS_HOI,
+  REQUEST_DONE_HOI,
+  REQUEST_SET_GYRO
 } from "../actions/input";
 
 export const input = {
@@ -35,6 +38,13 @@ export const input = {
   [REQUEST_START_HOI] () {
   },
   [REQUEST_START_TRIGGER] () {
+  },
+  [REQUEST_IS_HOI] (state, isHoi) {
+    state.input.isHoi = isHoi
+  },
+  [REQUEST_DONE_HOI] (){
+  },
+  [REQUEST_SET_GYRO] (){
   },
   [INIT_REQUEST] (state) {
     state.input = {

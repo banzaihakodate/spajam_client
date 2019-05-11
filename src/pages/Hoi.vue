@@ -38,12 +38,16 @@ export default {
   computed: {
     ...mapGetters([
       'evil',
-      'id'
+      'id',
+      'name',
+      'isHoi'
     ]),
   },
   methods: {
     ...mapActions([
-      'REQUEST_DONE_HOI'
+      'REQUEST_DONE_HOI',
+      'REQUEST_IS_HOI',
+      'REQUEST_SET_GYRO'
       // Actionから受け取りたいアクションを選択
     ]),
     start(){
@@ -74,6 +78,18 @@ export default {
       setTimeout(this.audio, 2000);
     } else {
       window.addEventListener('deviceorientation', this.orientationHandler)
+      this.REQUEST_IS_HOI(this.id)
+    }
+  },
+  watch: {
+    isHoi: function(newVal) {
+      if (newVal) {
+        this.REQUEST_SET_GYRO({
+          roomID:this.id, 
+          userID:this.name, 
+          gyro:this.angle
+        })
+      }
     }
   }
 }

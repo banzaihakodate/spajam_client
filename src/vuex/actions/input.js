@@ -17,7 +17,9 @@ export const REQUEST_START_HOI = 'REQUEST_START_HOI';
 
 export const REQUEST_START_TRIGGER = 'REQUEST_START_TRIGGER';
 
-export const REQUEST_DONE_HOI = 'REQUEST_DONE_HOI';
+export const REQUEST_DONE_HOI = 'REQUEST_DONE_HOI'; //firebase上のIsHoiの値を更新する
+export const REQUEST_IS_HOI = 'REQUEST_IS_HOI'; //firebaseからIsHoiの値を取得する
+export const REQUEST_SET_GYRO = 'REQUEST_SET_GYRO'; //自身のジャイロの値をfirebase上に登録する
 
 export const INIT_REQUEST = 'INIT_REQUEST';
 
@@ -116,11 +118,26 @@ export const input = {
       commit(SUCCESS_USERS, {users})
     });
   },
+  [REQUEST_IS_HOI] ({commit}, roomID) {
+    const room = firestore().collection('rooms').doc(roomID)
+    room.onSnapshot(doc => {
+      commit(REQUEST_IS_HOI, doc.data().IsHoi)
+    })
+  },
   [REQUEST_DONE_HOI] ({commit}, roomID) {
     commit(REQUEST_DONE_HOI);
     const rooms = firestore().collection('rooms')
     rooms.doc(roomID).update({
       IsHoi: true
+    })
+  },
+  [REQUEST_SET_GYRO] ({commit}, data) {
+    commit(REQUEST_SET_GYRO)
+    const {roomID, userID, gyro} = data
+    const room = firestore().collection('rooms').doc(roomID)
+    const user = room.collection('users').doc(userID)
+    user.update({
+      Gyro:gyro
     })
   },
   [INIT_REQUEST] ({ commit }, data) {
