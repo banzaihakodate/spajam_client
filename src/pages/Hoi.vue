@@ -40,7 +40,8 @@ export default {
       'evil',
       'id',
       'name',
-      'isHoi'
+      'isHoi',
+      'users'
     ]),
   },
   methods: {
@@ -84,12 +85,23 @@ export default {
   watch: {
     isHoi: function(newVal) {
       if (newVal) {
+        window.removeEventListener('deviceorientation', this.orientationHandler)
         this.REQUEST_SET_GYRO({
           roomID:this.id, 
           userID:this.name, 
           gyro:this.angle
         })
       }
+    },
+    users: {
+      handler: function(val) {
+        const dones = val.filter(item => item.gyro != null)
+        if (val.length === dones.length){
+          //gyroがnullになっているuserが0であるので，次の処理へ
+          router.push('win')
+        }
+      },
+      deep: true
     }
   }
 }
