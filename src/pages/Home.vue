@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="pl-5 pr-5">
-      <img src="../assets/icon.png" class="img"/>
+      <img src="../assets/logo.png" class="img"/>
       <v-flex xs12 md3 class="pt-5">
         <v-text-field
           label="Name"
