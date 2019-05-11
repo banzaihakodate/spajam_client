@@ -1,23 +1,32 @@
 <template>
   <div class="home">
-    <h1>ホーム</h1>
-    <v-flex xs12 sm6 md3 class="pl-3">
-      <v-text-field
-        label="Name"
-        v-model="name"
-      ></v-text-field>
-    </v-flex>
-    <v-flex xs12 sm6 md3 class="pl-3">
-      <v-text-field
-        type="number"
-        label="room id"
-        v-model="id"
-      ></v-text-field>
-    </v-flex>
-    <v-btn
-      @click="start">
-      スタート
-    </v-btn>
+    <div class="pl-5 pr-5">
+      <img src="../assets/finder.png" class="img"/>
+      <v-flex xs12 md3 class="pt-5">
+        <v-text-field
+          label="Name"
+          v-model="name"
+          prepend-inner-icon="person"
+        ></v-text-field>
+      </v-flex>
+      <v-flex xs12 md3>
+        <v-text-field
+          type="number"
+          label="ID"
+          v-model="id"
+          prepend-inner-icon="domain"
+        ></v-text-field>
+      </v-flex>
+      <div class="text-xs-center pt-5">
+        <v-btn
+          round
+          @click="start"
+          color="primary"
+          class="button">
+          Start
+        </v-btn>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -60,3 +69,13 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .home {
+  }
+  .button, .img {
+    width: 100%;
+  }
+  .img {
+    padding-top: 15vh;
+  }
+</style>

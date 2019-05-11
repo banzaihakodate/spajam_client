@@ -1,12 +1,18 @@
 <template>
-  <div class="home">
-    <h1>リスト</h1>
+  <div class="pl-5 pr-5 hoge">
+    <div class="text-xs-center">{{`${this.users.length} person`}}</div>
+    <div class="pt-3"></div>
     <Card class="card mb-2" v-for="(item, index) in this.users" v-bind:key="index" v-bind="item"/>
-    <v-btn
-      @click="start"
-      v-if="this.host">
-      スタート
-    </v-btn>
+    <div class="text-xs-center pt-5">
+      <v-btn
+        round
+        @click="start"
+        color="primary"
+        class="button"
+        v-if="this.host">
+        Start
+      </v-btn>
+    </div>
   </div>
 </template>
 
@@ -55,3 +61,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .hoge {
+    padding-top: 12vh;
+  }
+  .button, .img {
+    width: 100%;
+  }
+</style>

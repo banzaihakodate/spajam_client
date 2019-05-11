@@ -3,7 +3,10 @@
     <v-layout>
       <v-flex xs10>
         <v-card-title>
+          <v-icon>person</v-icon>
+          <div class="pl-3">
           {{name}}
+          </div>
         </v-card-title>
       </v-flex>
     </v-layout>
