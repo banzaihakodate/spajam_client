@@ -17,6 +17,8 @@ export const REQUEST_START_HOI = 'REQUEST_START_HOI';
 
 export const REQUEST_START_TRIGGER = 'REQUEST_START_TRIGGER';
 
+export const REQUEST_DONE_HOI = 'REQUEST_DONE_HOI';
+
 export const INIT_REQUEST = 'INIT_REQUEST';
 
 let users = [];
@@ -111,6 +113,13 @@ export const input = {
       });
       commit(SUCCESS_USERS, {users})
     });
+  },
+  [REQUEST_DONE_HOI] ({commit}, roomID) {
+    commit(REQUEST_DONE_HOI);
+    const rooms = firestore().collection('rooms')
+    rooms.doc(roomID).update({
+      IsHoi: true
+    })
   },
   [INIT_REQUEST] ({ commit }, data) {
     firestore().collection("rooms").doc(data).get().then(function(doc) {
