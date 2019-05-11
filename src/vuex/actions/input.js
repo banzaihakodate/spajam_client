@@ -66,7 +66,8 @@ export const input = {
           });
 
           firestore().collection("rooms").doc(data.id).get().then(function(data) {
-            if(data.data().IsCollected){
+            const flags = data.data()
+            if(!flags.IsStarted && flags.IsCollected){
               router.push('oni');
             }
           })
@@ -105,7 +106,8 @@ export const input = {
       querySnapshot.forEach(doc => {
         if(doc.id === data.id) {
           firestore().collection("rooms").doc(data.id).get().then(function(data) {
-            if(data.data().IsStarted){
+            const flags = data.data()
+            if(!flags.IsHoi && flags.IsStarted){
               router.push('hoi')
             }
           })
