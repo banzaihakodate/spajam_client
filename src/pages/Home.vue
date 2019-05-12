@@ -72,6 +72,14 @@ export default {
     }
   },
   created(){
+    Particles.init({
+      selector: '.background',
+      sizeVariations: 30,
+      maxParticles: 40,
+      color: [
+        'rgba(0,187,221,.5)', 'rgba(0,187,221,.3)', 'rgba(0,187,221,.1)'
+      ]
+    });
     this.btn = false;
   }
 }
