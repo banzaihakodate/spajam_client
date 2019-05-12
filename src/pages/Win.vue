@@ -17,7 +17,7 @@
         <v-btn
           round
           @click="start"
-          color="primary"
+          color="rgba(255,99,71)"
           class="button"
           v-if="this.btn">
           Back
@@ -103,6 +103,15 @@ export default {
     }
   },
   created() {
+    Particles.init({
+      selector: '.background',
+      sizeVariations: 30,
+      maxParticles: 40,
+      color: [
+        'rgba(255,99,71,.5)', 'rgba(255,99,71,.3)', 'rgba(255,99,71,.1)'
+      ]
+    });
+
     this.show = false;
     setTimeout(this.changeShow, 2000)
   }
@@ -115,7 +124,9 @@ export default {
   }
   .button, img {
     width: 100%;
+    color: white;
   }
+
   .loser-enter {
     opacity: 0;
   }
