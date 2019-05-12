@@ -8,7 +8,9 @@ import {
   REQUEST_ADD_EVIL, SUCCESS_ADD_EVIL, FAILED_ADD_EVIL, REQUEST_START_HOI, REQUEST_START_TRIGGER, INIT_REQUEST,
   REQUEST_IS_HOI,
   REQUEST_DONE_HOI,
-  REQUEST_SET_GYRO
+  REQUEST_SET_GYRO,
+  REQUEST_GET_GYRO,
+  SUCCESS_GET_GYRO
 } from "../actions/input";
 
 export const input = {
@@ -45,6 +47,11 @@ export const input = {
   [REQUEST_DONE_HOI] (){
   },
   [REQUEST_SET_GYRO] (){
+  },
+  [REQUEST_GET_GYRO] (){
+  },
+  [SUCCESS_GET_GYRO] (state, angle) {
+    state.input.angle = angle
   },
   [INIT_REQUEST] (state) {
     state.input = {

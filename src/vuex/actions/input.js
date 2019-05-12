@@ -22,6 +22,8 @@ export const REQUEST_IS_HOI = 'REQUEST_IS_HOI'; //firebaseからIsHoiの値を�
 export const REQUEST_SET_GYRO = 'REQUEST_SET_GYRO'; //自身のジャイロの値をfirebase上に登録する
 
 export const INIT_REQUEST = 'INIT_REQUEST';
+export const REQUEST_GET_GYRO = 'REQUEST_GET_GYRO';
+export const SUCCESS_GET_GYRO = 'SUCCESS_GET_GYRO';
 
 let users = [];
 
@@ -147,5 +149,13 @@ export const input = {
         firestore().collection("rooms").doc(data).delete();
       }});
     commit(INIT_REQUEST);
-  }
+  },
+  [REQUEST_GET_GYRO] ({ commit }, data) {
+    commit(REQUEST_GET_GYRO);
+    const room = firestore().collection('rooms').doc(data.id);
+    const user = room.collection('users').doc(data.name);
+    user.get().then(function (doc) {
+      commit(SUCCESS_GET_GYRO, doc.data().Gyro);
+    });
+  },
 };
