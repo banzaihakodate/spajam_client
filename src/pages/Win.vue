@@ -1,11 +1,29 @@
 <template>
-  <div class="home">
-    <h1>Win</h1>
-    <div>{{loser}}</div>
-    <v-btn
-      @click="start">
-      スタート
-    </v-btn>
+  <div class="pl-5 pr-5 hoge">
+    <div class="text-xs-center">
+      <h2>Selected is ...</h2>
+    <transition name="loser">
+      <div v-if="this.show" class="pt-5">
+        <img v-if='loser.IsEvil' src="../assets/oni.png" class="img"/>
+        <img v-if='!loser.IsEvil' src="../assets/person.png" class="img"/>
+        <h1>
+          {{loser.name}}
+        </h1>
+      </div>
+    </transition>
+    </div>
+    <div class="text-xs-center pt-5">
+      <transition name="button">
+        <v-btn
+          round
+          @click="start"
+          color="primary"
+          class="button"
+          v-if="this.btn">
+          Back
+        </v-btn>
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -20,7 +38,8 @@ export default {
   name: 'home',
   data() {
     return {
-      // このコンポーネントのみで使う値の宣言
+      show: false,
+      btn: false,
     }
   },
   components: {
@@ -44,7 +63,7 @@ export default {
       } else if (evilValue - range < 0) {
         const upper = evilValue + range
         const less = evilValue - range + 359
-        losers = others.filter(user => less <= user.gyro && user.gyro <= 359 || 0 <= user.gyro && user.gyro <= upper) 
+        losers = others.filter(user => less <= user.gyro && user.gyro <= 359 || 0 <= user.gyro && user.gyro <= upper)
       } else {
         const upper = evilValue + range
         const lower = evilValue - range
@@ -52,22 +71,22 @@ export default {
       }
       console.log(losers)
       if (losers.length === 0) {
-        return evil.name
+        return evil
       }
       if (losers.length === 1) {
-        return losers[0].name
+        return losers[0]
       }
 
       let min = 181
-      let minName = ''
+      let minUser = {}
       losers.forEach(item => {
         const dist = calcDistance360(evilValue, item.gyro)
         if (dist < min) {
           min = dist
-          minName = item.name
+          minUser = item
         }
       })
-      return minName
+      return minUser
     }
   },
   methods: {
@@ -77,7 +96,43 @@ export default {
     start(){
       this.INIT_REQUEST(this.id);
       router.push('/')
+    },
+    changeShow(){
+      this.show = true;
+      this.btn = true;
     }
+  },
+  created() {
+    this.show = false;
+    setTimeout(this.changeShow, 2000)
   }
 }
 </script>
+
+<style scoped>
+  .hoge {
+    padding-top: 12vh;
+  }
+  .button, img {
+    width: 100%;
+  }
+  .loser-enter {
+    opacity: 0;
+  }
+  .loser-enter-to {
+    opacity: 1;
+  }
+  .loser-enter-active {
+    transition: all 3s ease 0s;
+  }
+
+  .button-enter {
+    opacity: 0;
+  }
+  .button-enter-to {
+    opacity: 1;
+  }
+  .button-enter-active {
+    transition: all 0s ease 3s;
+  }
+</style>
