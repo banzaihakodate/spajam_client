@@ -63,7 +63,7 @@ export default {
       }
     }
   },
-  created() {
+  mounted() {
     setTimeout(this.evil_flag, 2000);
     this.REQUEST_START_TRIGGER({id: this.id});
   }

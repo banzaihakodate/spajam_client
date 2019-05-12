@@ -102,7 +102,7 @@ export default {
       this.btn = true;
     }
   },
-  created() {
+  mounted() {
     Particles.init({
       selector: '.background',
       sizeVariations: 30,

@@ -78,7 +78,7 @@ export default {
       }
     }
   },
-  created() {
+  mounted() {
     if (this.evil) {
       setTimeout(this.audio, 2000);
     } else {

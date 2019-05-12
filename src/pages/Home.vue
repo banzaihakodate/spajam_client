@@ -71,7 +71,7 @@ export default {
       }, 1500);
     }
   },
-  created(){
+  mounted(){
     Particles.init({
       selector: '.background',
       sizeVariations: 30,
