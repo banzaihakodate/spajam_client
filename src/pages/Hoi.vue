@@ -57,7 +57,7 @@ export default {
       router.push('/win')
     },
     audio(){
-      const audio = new Audio('https://vocaroo.com/media_command.php?media=s1krZxkdiCyw&command=download_mp3')
+      const audio = new Audio('http://cloud.ai-j.jp/hackathon/tmp/201905120102081253378235.ogg')
       audio.addEventListener('ended', () => {
         this.REQUEST_DONE_HOI(this.id)
       })

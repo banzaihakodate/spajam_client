@@ -22,7 +22,8 @@
           round
           @click="start"
           color="primary"
-          class="button">
+          class="button"
+          :disabled="this.btn">
           Next
         </v-btn>
       </div>
@@ -42,6 +43,7 @@ export default {
     return {
       name: '',
       id: '',
+      btn: false
     }
   },
   components: {
@@ -57,7 +59,7 @@ export default {
       REQUEST_INPUT
     ]),
     start(){
-      // TODO: firebaseへの追加
+      this.btn = true;
       const data = {
         name: this.name,
         id: this.id,
@@ -68,6 +70,9 @@ export default {
         router.push('/list')
       }, 1500);
     }
+  },
+  created(){
+    this.btn = false;
   }
 }
 </script>
