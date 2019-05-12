@@ -4,8 +4,8 @@
       <h2>Selected is ...</h2>
     <transition name="loser">
       <div v-if="this.show" class="pt-5">
-        <img v-if='loser.IsEvil' src="../assets/oni.png" class="img"/>
-        <img v-if='!loser.IsEvil' src="../assets/person.png" class="img"/>
+        <img v-if='loser.isEvil' src="../assets/oni.png" class="img"/>
+        <img v-if='!loser.isEvil' src="../assets/person.png" class="img"/>
         <h1>
           {{loser.name}}
         </h1>
