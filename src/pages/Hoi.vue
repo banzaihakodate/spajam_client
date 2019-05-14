@@ -6,7 +6,18 @@
       <div>{{y}}</div>
       <div>{{x}}</div>
     </div>
-      <img :style="{ transform: 'rotate('+ this.angle +'deg)'}" src="../assets/yubi.png" class="img"/>
+    <img :style="{ transform: 'rotate('+ this.angle +'deg)'}" src="../assets/yubi.png" class="img"/>
+    <div class="hoge">
+      <v-btn
+        round
+        @click="audio"
+        color="primary"
+        v-if="this.evil"
+        :disabled="this.btn"
+        class="button">
+        Music Start
+      </v-btn>
+    </div>
   </div>
 </template>
 
@@ -25,6 +36,7 @@ export default {
       x:0,
       y:0,
       angle:0,
+      btn: false,
     }
   },
   components: {
@@ -47,14 +59,12 @@ export default {
       'REQUEST_GET_GYRO'
       // Actionから受け取りたいアクションを選択
     ]),
-    start(){
-      router.push('/win')
-    },
     audio(){
-      const audio = new Audio('https://vocaroo.com/media_command.php?media=s1krZxkdiCyw&command=download_mp3')
+      this.btn = true;
+      const audio = new Audio('https://vocaroo.com/media_command.php?media=s1krZxkdiCyw&command=download_mp3');
       audio.addEventListener('ended', () => {
         this.REQUEST_DONE_HOI(this.id)
-      })
+      });
       audio.play();
     },
     orientationHandler() { //要パラメータ調整
@@ -72,10 +82,7 @@ export default {
   },
   mounted() {
     window.addEventListener('deviceorientation', this.orientationHandler)
-    if (this.evil) {
-      setTimeout(this.audio, 2000);
-    }
-    this.REQUEST_IS_HOI(this.id)
+    this.REQUEST_IS_HOI(this.id);
   },
   watch: {
     isHoi: function(newVal) {
@@ -112,7 +119,7 @@ export default {
   .button, .img {
     width: 100%;
   }
-  .img {
+  .img, .hoge {
     padding-top: 15vh;
   }
 </style>
