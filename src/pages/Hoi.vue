@@ -64,17 +64,15 @@ export default {
       audio.play();
     },
     orientationHandler() { //要パラメータ調整
-      if (!this.evil) {
-        this.beta = event.beta //角度
-        this.gamma = event.gamma //角度
-        this.x = Math.sin(event.gamma * Math.PI / 180) //ラジアンに変換して正弦波
-        this.y = Math.cos(event.beta * Math.PI / 180) //ラジアンに変換して余弦波
-        const _angle = Math.atan2(this.x, this.y) * 180 / Math.PI //tanの値から，角度算出
-        if (_angle < 0) {
-          this.angle = Math.floor(360 + _angle)
-        } else {
-          this.angle = Math.floor(_angle)
-        }
+      this.beta = event.beta //角度
+      this.gamma = event.gamma //角度
+      this.x = Math.sin(event.gamma * Math.PI / 180) //ラジアンに変換して正弦波
+      this.y = Math.cos(event.beta * Math.PI / 180) //ラジアンに変換して余弦波
+      const _angle = Math.atan2(this.x, this.y) * 180 / Math.PI //tanの値から，角度算出
+      if (_angle < 0) {
+        this.angle = Math.floor(360 + _angle)
+      } else {
+        this.angle = Math.floor(_angle)
       }
     }
   },

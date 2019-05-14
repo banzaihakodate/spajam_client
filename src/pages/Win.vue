@@ -69,7 +69,6 @@ export default {
         const lower = evilValue - range
         losers = others.filter(user => lower <= user.gyro && user.gyro <= upper)
       }
-      console.log(losers)
       if (losers.length === 0) {
         return evil
       }
@@ -103,6 +102,7 @@ export default {
     }
   },
   mounted() {
+    // eslint-disable-next-line
     Particles.init({
       selector: '.background',
       sizeVariations: 30,

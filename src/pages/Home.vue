@@ -72,6 +72,7 @@ export default {
     }
   },
   mounted(){
+    // eslint-disable-next-line
     Particles.init({
       selector: '.background',
       sizeVariations: 30,
