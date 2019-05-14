@@ -57,7 +57,7 @@ export default {
       router.push('/win')
     },
     audio(){
-      const audio = new Audio('http://cloud.ai-j.jp/hackathon/tmp/201905120102081253378235.ogg')
+      const audio = new Audio('https://vocaroo.com/media_command.php?media=s1krZxkdiCyw&command=download_mp3')
       audio.addEventListener('ended', () => {
         this.REQUEST_DONE_HOI(this.id)
       })
@@ -77,10 +77,10 @@ export default {
     }
   },
   mounted() {
+    window.addEventListener('deviceorientation', this.orientationHandler)
     if (this.evil) {
       setTimeout(this.audio, 2000);
     } else {
-      window.addEventListener('deviceorientation', this.orientationHandler)
       this.REQUEST_IS_HOI(this.id)
     }
   },
