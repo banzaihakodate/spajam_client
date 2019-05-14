@@ -6,12 +6,7 @@
       <div>{{y}}</div>
       <div>{{x}}</div>
     </div>
-    <div v-if="!this.evil">
       <img :style="{ transform: 'rotate('+ this.angle +'deg)'}" src="../assets/yubi.png" class="img"/>
-    </div>
-    <div v-if="this.evil">
-      <img :style="{ transform: 'rotate('+ this.stateAngle +'deg)'}" src="../assets/yubi.png" class="img"/>
-    </div>
   </div>
 </template>
 
@@ -42,7 +37,6 @@ export default {
       'name',
       'isHoi',
       'users',
-      'stateAngle'
     ]),
   },
   methods: {
@@ -80,9 +74,8 @@ export default {
     window.addEventListener('deviceorientation', this.orientationHandler)
     if (this.evil) {
       setTimeout(this.audio, 2000);
-    } else {
-      this.REQUEST_IS_HOI(this.id)
     }
+    this.REQUEST_IS_HOI(this.id)
   },
   watch: {
     isHoi: function(newVal) {
